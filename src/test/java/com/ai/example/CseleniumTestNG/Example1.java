@@ -33,13 +33,11 @@ public class Example1 {
         // Navigate to The Internet
         driver.get("http://the-internet.herokuapp.com/");
         // Wait for the Forgot Password link
-        WebElement forgotPasswordLink = wait.until(ExpectedConditions
-                .presenceOfElementLocated(By.linkText("Forgot Password")));
+        WebElement forgotPasswordLink = driver.findElement(By.linkText("Forgot Password"));
         // Click Forgot Password link
         forgotPasswordLink.click();
         // Wait for the Email field
-        WebElement emailField = wait.until(ExpectedConditions
-                .presenceOfElementLocated(By.id("email")));
+        WebElement emailField = driver.findElement(By.id("email"));
         // Assert the Email field is enabled
         assertTrue(emailField.isEnabled(), "Email field should be enabled");
     }
