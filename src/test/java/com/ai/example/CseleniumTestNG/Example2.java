@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class Example2 extends BaseTest {
@@ -21,20 +22,18 @@ public class Example2 extends BaseTest {
 
     @Test
     public void testEmailFieldIsEnabled() {
-        // Navigate to The Internet
-        driver.get("http://the-internet.herokuapp.com/");
-        // Create wait
-        WebDriverWait wait = new WebDriverWait(driver,10);
-        // Wait for the Forgot Password link
-        WebElement forgotPasswordLink = wait.until(ExpectedConditions
-                .presenceOfElementLocated(By.linkText("Forgot Password")));
-        // Click Forgot Password link
-        forgotPasswordLink.click();
-        // Wait for the Email field
-        WebElement emailField = wait.until(ExpectedConditions
-                .presenceOfElementLocated(By.id("email")));
-        // Assert the Email field is enabled
-        assertTrue(emailField.isEnabled(), "Email field should be enabled");
+        // Navigate to bbc
+        driver.get("http://bbc.co.uk");
+        // Click Bottom iPlayer link!
+        driver.findElement(By.cssSelector("#orb-aside .orb-nav-iplayer a")).click();
+
+        // Navigate to bbc
+        driver.get("http://bbc.co.uk");
+        // Get text from top sports story
+        String topStoryText = driver.findElement(By.cssSelector("section.hp-module--duo div.hp-top-stories--sport-palette div:first-child .top-story__content h3")).getText();
+
+        // Assert the top story text is what we expected
+        assertEquals(topStoryText, "LiveSportsday - rolling football news");
     }
 
 }
