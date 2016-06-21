@@ -21,7 +21,7 @@ public class Example2 extends BaseTest {
     private WebDriverWait wait;
 
     @Test
-    public void testEmailFieldIsEnabled() {
+    public void testBBCTopSportsStoryName() {
         // Navigate to bbc
         driver.get("http://bbc.co.uk");
         // Click Bottom iPlayer link!
